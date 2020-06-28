@@ -4,9 +4,16 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/ivannpaz/prototest/github.com/ivannpaz/prototest"
 	"google.golang.org/protobuf/proto"
 )
+
+type Pepe struct {
+	Master bool
+}
+
+func (p *Pepe) speak() {
+	fmt.Println("Im pepe")
+}
 
 func main() {
 	fmt.Println("Client starting...")
