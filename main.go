@@ -3,44 +3,34 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-
-	"google.golang.org/protobuf/proto"
 )
 
-type Pepe struct {
+type pepe struct {
 	Master bool
 }
 
-func (p *Pepe) speak() {
+func (p *pepe) speak() {
 	fmt.Println("Im pepe")
 }
 
 func main() {
 	fmt.Println("Client starting...")
 
-	p := &prototest.Person{
-		Name: "pepe",
-		Age:  14,
-		Followers: &prototest.Followers{
-			Facebook: 12,
-			Youtube:  2,
-		},
-		PersonOfInterest: "yes he is",
-	}
+	// p := new(pepe)
 
-	data, err := proto.Marshal(p)
-	if err != nil {
-		panic(err)
-	}
+	// data, err := proto.Marshal(p)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	fmt.Printf("%s\n%v\n%+#v\n", data, data, data)
+	// fmt.Printf("%s\n%v\n%+#v\n", data, data, data)
 
-	ell := &prototest.Person{}
-	err = proto.Unmarshal(data, ell)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("%+#v\n", ell)
+	ell := new(pepe)
+	// err = proto.Unmarshal(data, ell)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Printf("%+#v\n", ell)
 
 	json, err := json.MarshalIndent(ell, "", "  ")
 	if err != nil {
