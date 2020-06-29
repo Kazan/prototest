@@ -3,39 +3,27 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+
+	"github.com/Kazan/prototest_gen_go/computers"
+	"google.golang.org/protobuf/proto"
 )
-
-type pepe struct {
-	Master bool
-}
-
-func (p *pepe) speak() {
-	fmt.Println("Im pepe")
-}
 
 func main() {
 	fmt.Println("Client starting...")
 
-	// p := new(pepe)
+	mm := new(computers.Memory)
 
-	// data, err := proto.Marshal(p)
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// fmt.Printf("%s\n%v\n%+#v\n", data, data, data)
-
-	ell := new(pepe)
-	// err = proto.Unmarshal(data, ell)
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// fmt.Printf("%+#v\n", ell)
-
-	json, err := json.MarshalIndent(ell, "", "  ")
+	data, err := proto.Marshal(mm)
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println(string(json))
+	fmt.Printf("%s\n%v\n%+#v\n", data, data, data)
+
+	json, err := json.MarshalIndent(mm, "", "  ")
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("JSON", string(json))
 }
